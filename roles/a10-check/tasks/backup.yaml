@@ -1,0 +1,20 @@
+- name: A10 Backup
+  uri:
+    url: "{{ backupapi }}"
+    method: POST
+    body: "{{ backupdestinantion }}"
+    return_content: yes
+    status_code: 200
+    body_format: json
+    validate_certs: False
+    headers:
+      Content-Type: "application/json"
+      Authorization: "A10 {{ a10signature }}"
+  register: backup
+
+#- name: Set backup
+#  set_fact:
+#    signature: "{{ (token.content  | from_json).authresponse.signature }}"
+
+- debug:
+    msg: "{{ backup }}"

@@ -1,0 +1,7 @@
+- name: Check that you can connect (GET) to a page and it returns a status 200
+  uri:
+    url: https://172.26.104.233
+    validate_certs: False
+  register: a10output
+- debug:
+   msg: "{{ a10output }}"     

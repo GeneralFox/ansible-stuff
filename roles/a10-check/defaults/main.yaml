@@ -1,0 +1,21 @@
+authapi: "https://172.26.104.233/axapi/v3/auth"
+backupapi: "https://172.26.104.233/axapi/v3/backup/system"
+clistapi:  "https://172.26.104.233/axapi/v3/class-list/"
+clistimpperiapi: "https://172.26.104.233/axapi/v3/import-periodic/class-list/"
+
+bodytoken:
+  credentials:
+    username: "cogeinrw"
+    password: "!WrPass!00Lab"
+
+backupdestinantion:
+  "system":
+    "remote-file": "scp://a10repo:a10repo@172.27.17.252/home/a10repo/automation/backup/backup.test.{{ansible_date_time.date}}.tar.gz"
+    "use-mgmt-port": "1"
+
+clistimportperiodictest:
+  "class-list":
+    "period": 60
+    "remote-file": "scp://a10repo:a10repo@172.27.17.252:/home/a10repo/automation/class-list/cl-test-periodic.txt"
+    "class-list": "cl-test-periodic"
+    "use-mgmt-port": 1

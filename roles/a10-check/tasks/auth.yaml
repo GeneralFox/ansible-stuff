@@ -1,0 +1,19 @@
+- name: Verifica autenticazione
+  uri:
+    url: "{{ authapi }}"
+    validate_certs: False
+    method: POST
+    body_format: json
+    headers:
+     Content-Type: "application/json"
+    body: "{{ bodytoken }}"
+    return_content: yes
+    status_code: 200
+  register: a10auth
+
+- name: Estrai Token
+  set_fact:
+    a10signature: "{{ (a10auth.content  | from_json).authresponse.signature }}"
+
+- debug:
+   msg: "{{ a10signature }}"

@@ -1,0 +1,4 @@
+- import_tasks: auth.yaml
+- import_tasks: backup.yaml
+#- import_tasks: clist.yaml
+#- import_tasks: clist-importperiodic.yaml

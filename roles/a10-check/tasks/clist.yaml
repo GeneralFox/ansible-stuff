@@ -1,0 +1,27 @@
+- name: Obtain class-list list
+  uri:
+    url: "{{ clistapi }}"
+    method: GET
+    return_content: yes
+    status_code: 200
+    body_format: json
+    validate_certs: False
+    headers:
+      Content-Type: "application/json"
+      Authorization: "A10 {{ a10signature }}"
+  register: clist
+
+- name: Estrai List Name
+  set_fact:
+    #clist_name: "{{ (clist.content | from_json).[/"class-list-list/"] | map(attribute='name') | list }}"
+    clist_name: "{{ clist.json | json_query(query) }}"
+  vars:
+    query: '"class-list-list"[].name'
+- name: Stampa
+  debug: #var=item.name
+#  #with_items: "{{ clist_name | dict2items}}"
+   msg: "{{ item }}"
+  loop: "{{ clist_name | flatten(levels=1) }}"
+
+#- debug:
+#    msg: "{{ clist_name }}"
