@@ -5,8 +5,8 @@ clistimpperiapi: "https://172.26.104.233/axapi/v3/import-periodic/class-list/"
 
 bodytoken:
   credentials:
-    username: "cogeinrw"
-    password: "!WrPass!00Lab"
+    username: "!"
+    password: "!"
 
 backupdestinantion:
   "system":
